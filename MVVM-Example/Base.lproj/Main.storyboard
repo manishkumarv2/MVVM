@@ -5,12 +5,13 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13771"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
     </customFonts>
@@ -57,6 +58,7 @@
                                 <connections>
                                     <outlet property="descriptionLabel" destination="0hp-aU-FRN" id="Rk0-Np-RqG"/>
                                     <outlet property="nameLabel" destination="ws9-VS-biG" id="qsK-Xs-E4Z"/>
+                                    <segue destination="MSW-Yq-d1o" kind="show" identifier="SourceDetailsTableViewController" id="6Nw-8D-4Xm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -70,6 +72,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXf-R0-qIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="-23.838080959520241"/>
+        </scene>
+        <!--Source Details Table View Controller-->
+        <scene sceneID="Jur-zA-Yvv">
+            <objects>
+                <tableViewController id="MSW-Yq-d1o" customClass="SourceDetailsTableViewController" customModule="MVVM_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W86-Jq-A1f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlineTableViewCell" rowHeight="103" id="U6g-jG-7zc" customClass="HeadlineTableViewCell" customModule="MVVM_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="103"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U6g-jG-7zc" id="RRM-dX-OWh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tb2-5b-4hU">
+                                            <rect key="frame" x="16" y="11" width="343" height="26"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hig-CP-Nxf">
+                                            <rect key="frame" x="16" y="42" width="343" height="19"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Hig-CP-Nxf" firstAttribute="centerY" secondItem="RRM-dX-OWh" secondAttribute="centerY" id="58X-bK-Pe4"/>
+                                        <constraint firstItem="tb2-5b-4hU" firstAttribute="top" secondItem="RRM-dX-OWh" secondAttribute="topMargin" id="8rT-To-FZf"/>
+                                        <constraint firstItem="Hig-CP-Nxf" firstAttribute="trailing" secondItem="tb2-5b-4hU" secondAttribute="trailing" id="B0p-TN-YSV"/>
+                                        <constraint firstItem="tb2-5b-4hU" firstAttribute="leading" secondItem="RRM-dX-OWh" secondAttribute="leadingMargin" id="RlR-2g-uH7"/>
+                                        <constraint firstItem="Hig-CP-Nxf" firstAttribute="leading" secondItem="tb2-5b-4hU" secondAttribute="leading" id="TmC-Mb-D0B"/>
+                                        <constraint firstItem="Hig-CP-Nxf" firstAttribute="top" secondItem="tb2-5b-4hU" secondAttribute="bottom" constant="5" id="bmn-NB-wFA"/>
+                                        <constraint firstItem="tb2-5b-4hU" firstAttribute="trailing" secondItem="RRM-dX-OWh" secondAttribute="trailingMargin" id="ltu-F9-80I"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="Hig-CP-Nxf" id="txA-yc-jea"/>
+                                    <outlet property="titleLabel" destination="tb2-5b-4hU" id="WhO-4K-Y3v"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MSW-Yq-d1o" id="KiM-xi-kIs"/>
+                            <outlet property="delegate" destination="MSW-Yq-d1o" id="aW1-dF-Wvx"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SYB-Ha-lgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893.60000000000002" y="-24.7376311844078"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y8o-BJ-tTe">

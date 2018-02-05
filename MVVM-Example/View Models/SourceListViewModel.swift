@@ -35,6 +35,10 @@ class SourceListViewModel : NSObject {
             self.sourceViewModels = sources.flatMap(SourceViewModel.init)
         }
     }
+    
+    func source(at index:Int) -> SourceViewModel {
+        return self.sourceViewModels[index]
+    }
 }
 
 // SourceViewModel

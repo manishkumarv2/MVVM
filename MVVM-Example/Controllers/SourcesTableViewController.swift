@@ -13,7 +13,11 @@ struct Cells {
     static let headline = "HeadlineTableViewCell"
     static let source = "SourceTableViewCell"
 }
-
+struct SegueIdentifier {
+    
+    static let showSourceDetails = "SourceDetailsTableViewController"
+//    static let addSource = "AddSourceTableViewController"
+}
 class SourcesTableViewController : UITableViewController {
     
     private var webservice :Webservice!
@@ -22,7 +26,8 @@ class SourcesTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Sources"
+        self.navigationItem.largeTitleDisplayMode = .never
         updateUI()
     }
     
@@ -47,6 +52,25 @@ class SourcesTableViewController : UITableViewController {
         
         self.tableView.dataSource = self.dataSource
         self.tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == SegueIdentifier.showSourceDetails {
+            performSegueForShowSourceDetails(segue: segue)
+            
+        }
+    }
+    
+    private func performSegueForShowSourceDetails(segue :UIStoryboardSegue) {
+        
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            fatalError("indexPath not found")
+        }
+        
+        let sourceViewModel = self.sourceListViewModel.source(at: indexPath.row)
+        let sourceDetailsTVC = segue.destination as! SourceDetailsTableViewController
+        sourceDetailsTVC.sourceViewModel = sourceViewModel
     }
     
 }
